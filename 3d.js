@@ -15,7 +15,7 @@ let model;
 let mixer;
 
 const loader = new GLTFLoader();
-loader.load('/assets/demon_dragon.glb',
+loader.load('./assets/demon_dragon.glb',
   function(gltf) {
     model = gltf.scene;
     model.position.y = -1.5;
