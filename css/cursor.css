@@ -15,9 +15,11 @@ a {
   position: relative;
   z-index: 2;
   background-color: transparent;
+  cursor: pointer;
 }
 
 #cursor {
+  display: none;
   position: fixed;
   width: 20px;
   height: 20px;
@@ -30,16 +32,22 @@ a {
   z-index: 105;
 }
 
-@supports not (mix-blend-mode: difference) {
-  #cursor {
-    mix-blend-mode: exclusion; /* Fallback */
-  }
-}
-
 #cursor.hover-sm {
   transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(2.5);
 }
 
 #cursor.hover-xl {
   transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(10);
+}
+
+@supports not (mix-blend-mode: difference) {
+  #cursor {
+    mix-blend-mode: exclusion; /* Fallback */
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #cursor {
+    display: block;
+  }
 }

@@ -77,27 +77,18 @@
         ✅ Prevents the browser from automatically restoring the scroll position when navigating back/forward.
         ✅ Useful when handling custom scroll behavior (e.g., smooth scrolling or lazy loading).
       -->
-        <script>history.scrollRestoration && (history.scrollRestoration = 'manual');</script>
+        <!-- <script>history.scrollRestoration && (history.scrollRestoration = 'manual');</script> -->
     <!-- ================== END critical script -->
 
     <!-- Load non-critical CSS -->
     <link rel="stylesheet" href="./css/fonts.css" preload>
     <link rel="stylesheet" href="./css/scrollbar.css" preload>
     <link rel="stylesheet" href="./main.css" preload>
+    <link rel="stylesheet" href="./media.css" preload>
     <link rel="stylesheet" href="./css/tw.css" preload>
     <link rel="stylesheet" href="./css/cursor.css" preload>
     <link rel="stylesheet" href="./css/fade.css" preload>
-    <link rel="stylesheet" href="./css/3d.css" preload>
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.22/dist/lenis.css">
-
-    <script type="importmap">
-      {
-        "imports": {
-          "three": "https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js",
-          "three/addons/": "https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/"
-        }
-      }
-    </script>
   </head>
   <body>
     <div id="cursor"></div>
@@ -134,16 +125,16 @@
   
           <div class="banner__content">
             <div>
-              <p class="suisse-500 text-md">*From:</p>
-              <p class="suisse-500 text-md banner__content-p-offset">Cebu, Philippines</p>
+              <p>*From:</p>
+              <p class="banner__content-p-offset">Cebu, Philippines</p>
             </div>
             <div>
-              <p class="suisse-500 text-md">*Status:</p>
-              <p class="suisse-500 text-md banner__content-p-offset">Developer</p>
+              <p>*Status:</p>
+              <p class="banner__content-p-offset">Developer</p>
             </div>
             <div>
-              <p class="suisse-500 text-md">*Email:</p>
-              <p class="suisse-500 text-md banner__content-p-offset">tatsuya@matik.app</p>
+              <p>*Email:</p>
+              <p class="banner__content-p-offset">tatsuya@matik.app</p>
             </div>
           </div>
         </section>
@@ -163,8 +154,6 @@
         </section>
 
         <section data-model id="works" class="works bg-black">
-          <div id="container3D"></div>
-
           <div class="w-full">
             <!-- project start -->
             <div class="work">
@@ -199,7 +188,7 @@
             <div class="work">
               <div class="work__contents">
                 <div class="work__content">
-                  <p class="work__site">The Daily Male</p>
+                  <p class="work__site">Daily Male</p>
                 </div>
                 <div class="work__content work__content--duplicate">
                   <p class="work__site">
@@ -309,10 +298,8 @@
 
     <script src="https://unpkg.com/lenis@1.1.22/dist/lenis.min.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <script type="module" src="./main.js"></script>
-    <script type="module" src="./3d.js"></script>
   </body>
 </html>

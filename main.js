@@ -7,6 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
   handleLoader();
   observeBanner();
 
+  
   const lenis = new Lenis({
     autoRaf: true,
     smooth: true, // Enables smooth scrolling
@@ -15,34 +16,37 @@ window.addEventListener("DOMContentLoaded", () => {
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom easing function (optional)
   });
 
-  // cursor
-  const cursor = document.getElementById("cursor");
-  const pos = { x: 0, y: 0 };
-  const mouse = { x: 0, y: 0 };
-  const speed = 0.1;
-  
-  window.addEventListener("mousemove", (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-  });
-  
-  function animateCursor() {
-    pos.x += (mouse.x - pos.x) * speed;
-    pos.y += (mouse.y - pos.y) * speed;
+  if (window.innerWidth >= 768) {
+    // cursor
+    const cursor = document.getElementById("cursor");
+    const pos = { x: 0, y: 0 };
+    const mouse = { x: 0, y: 0 };
+    const speed = 0.1;
     
-    cursor.style.setProperty("--x", `${pos.x}px`);
-    cursor.style.setProperty("--y", `${pos.y}px`);
-  
-    requestAnimationFrame(animateCursor);
+    window.addEventListener("mousemove", (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+    
+    function animateCursor() {
+      pos.x += (mouse.x - pos.x) * speed;
+      pos.y += (mouse.y - pos.y) * speed;
+      
+      cursor.style.setProperty("--x", `${pos.x}px`);
+      cursor.style.setProperty("--y", `${pos.y}px`);
+    
+      requestAnimationFrame(animateCursor);
+    }
+    
+    animateCursor();
+
+    // Hover effect
+    document.querySelectorAll("a, button").forEach((el) => {
+      el.addEventListener("mouseenter", () => cursor.classList.add("hover-sm"));
+      el.addEventListener("mouseleave", () => cursor.classList.remove("hover-sm"));
+    });
   }
   
-  animateCursor();
-  
-  // Hover effect
-  document.querySelectorAll("a, button").forEach((el) => {
-    el.addEventListener("mouseenter", () => cursor.classList.add("hover-sm"));
-    el.addEventListener("mouseleave", () => cursor.classList.remove("hover-sm"));
-  });
 
   // Hover effect
   document.querySelectorAll("[data-letters]").forEach((el) => {
