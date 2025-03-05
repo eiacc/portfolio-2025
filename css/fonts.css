@@ -1,18 +1,3 @@
-/* @font-face {
-  font-family: 'MonumentExtended-UltraBold';
-  src: url('/fonts/MonumentExtended-Ultrabold.otf');
-} */
-
-@font-face {
-  font-family: 'SuisseIntl-Medium';
-  src: url('/fonts/SuisseIntl-Medium.ttf');
-}
-
-:root {
-  --font-fallback: sans-serif;
-  --suisse-medium: 'SuisseIntl-Medium', var(--font-fallback);
-}
-
 .suisse-500 {
   font-family: var(--suisse-medium);
 }
