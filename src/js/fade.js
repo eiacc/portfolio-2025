@@ -81,7 +81,7 @@ function handleMutation(loader, container, observer, mutationObserver) {
 /**
  * 
  * @param {HTMLElement} container - section we want to observe
- * @param {boolean} state 
+ * @param {boolean} state
  * @returns void
  */
 function showBoundary(container, state = false) {

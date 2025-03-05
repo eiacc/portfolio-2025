@@ -1,0 +1,17 @@
+{
+  "name": "portfolio_2025",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "optimize": "bun run index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "esbuild": "^0.25.0"
+  }
+}

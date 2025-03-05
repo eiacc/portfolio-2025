@@ -1,13 +1,7 @@
-import { handleLoader }   from "./js/loader.js";
-import { observeBanner }  from "./js/fade.js";
-// import { SmoothScroll }   from "./js/scroll.js";
-// import { StickyScroll }   from "./js/sticky.js";
-
 window.addEventListener("DOMContentLoaded", () => {
   handleLoader();
   observeBanner();
 
-  
   const lenis = new Lenis({
     autoRaf: true,
     smooth: true, // Enables smooth scrolling

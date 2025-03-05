@@ -1,0 +1,4 @@
+[data-loading="true"] ~ #sandbox {
+  height: 100vh;
+  overflow-y: hidden;
+}

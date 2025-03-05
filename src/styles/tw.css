@@ -15,3 +15,7 @@
 }
 .uppercase { text-transform: uppercase; }
 .w-full { width: 100%; }
+.text-sm {font-size: 14px;}
+.text-md {font-size: 18px;}
+.text-lg {font-size: 20px;}
+.text-xl {font-size: 24px;}
