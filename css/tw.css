@@ -1,0 +1,17 @@
+.h-screen { height: 100vh ;}
+.h-screen-\[300vh\] { height: 300vh ;}
+.text-center { text-align: center; }
+.flex { display: flex; }
+.justify-end { justify-content: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.items-center {align-items: center;}
+.gap-4{ gap: 16px; }
+.bg-orange { background: #ffa6009d; }
+.bg-black { background: #000; }
+.border { 
+  border: 10px solid black; 
+  position: sticky;
+}
+.uppercase { text-transform: uppercase; }
+.w-full { width: 100%; }

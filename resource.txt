@@ -1,0 +1,13 @@
+scrolling:
+  1. absolute images that moves with random speed and zoom in like animation - https://www.youtube.com/watch?v=laS7TrKXqG8
+  2. image parallax on scroll - https://www.youtube.com/watch?v=NfbwVD6Y-S4
+  3. 3d asset https://www.youtube.com/watch?v=l4IzaFbpOCc
+  4. stacking cards parallax - https://www.youtube.com/watch?v=am0ZueQmpzg&pp=ygUgc2Nyb2xsIGltYWdlIHBhcmFsbGF4IGVmZmVjdCBqcyA%3D
+  5. zoom parallax - https://www.youtube.com/watch?v=pEt0eiArTSg
+
+page transition:
+  1. https://www.youtube.com/watch?v=qhj64NGi-wc&t=91s
+
+masking
+  1. clip mask that reveals video behind - https://www.youtube.com/watch?v=hhnzPijhHio
+  2. spotlight effect - https://www.youtube.com/watch?v=y6z8MYjZ_J8&t=361s

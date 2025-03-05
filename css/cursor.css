@@ -1,0 +1,45 @@
+:root {
+  --x: 0;
+  --y: 0;
+  --blend: difference
+}
+
+/* 
+  mix-blend-mode: difference; doesn’t work well on <a> tags because 
+  links often inherit background colors from the page or have their 
+  own styles that override the effect. 
+  
+  below is the fix and workaround
+*/
+a {
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
+}
+
+#cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  transition: transform 0.2s ease-out;
+  transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(1);
+  z-index: 105;
+}
+
+@supports not (mix-blend-mode: difference) {
+  #cursor {
+    mix-blend-mode: exclusion; /* Fallback */
+  }
+}
+
+#cursor.hover-sm {
+  transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(2.5);
+}
+
+#cursor.hover-xl {
+  transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(10);
+}

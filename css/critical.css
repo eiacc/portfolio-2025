@@ -1,0 +1,19 @@
+[data-loader='1'] {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(0 0 0 / 40%);
+  overflow: hidden;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+[data-loading="true"] ~ #sandboxBody {
+  height: 100vh;
+  overflow-y: hidden;
+}

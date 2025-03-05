@@ -1,0 +1,17 @@
+[data-fade-up] {
+  overflow: hidden;
+}
+
+[data-fade-up] * {
+  transition: translateY 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: translateY(100%);
+}
+
+[data-fade-down] {
+  overflow: hidden;
+  display: flex;
+}
+
+[data-fade-down] > * {
+  transform: translateY(-100%);
+}
