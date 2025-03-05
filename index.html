@@ -7,17 +7,21 @@
     <meta name="description" content="Tatsuya Portfolio 2025">
     <link rel="shortcut icon" href="./fav.svg" type="image/svg+xml"/>
     <link rel="icon" type="image/svg+xml" href="./fav.svg">
+    <link rel="preload" href="./fonts/MonumentExtended-Ultrabold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="./fonts/SuisseIntl-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 
     <!-- Critical -->
     <style>
       @font-face {
         font-family: 'SuisseIntl-Medium';
-        src: url('./fonts/SuisseIntl-Medium.woff2');
+        src: url('./fonts/SuisseIntl-Medium.woff2') format('woff2');
+        font-display: swap;
       }
 
       @font-face {
         font-family: 'MonumentExtended-UltraBold';
-        src: url('./fonts/MonumentExtended-Ultrabold.woff2');
+        src: url('./fonts/MonumentExtended-Ultrabold.woff2') format('woff2');
+        font-display: swap;
       }
 
       :root {
