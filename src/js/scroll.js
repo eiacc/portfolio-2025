@@ -113,9 +113,12 @@ class ViewSectionScroll {
       return
     }
 
-    this.elements.forEach(el => {
-      el.addEventListener('click', e => this.#clickHandler(e))
-    })
+    this.clickHandler = this.clickHandler.bind(this)
+  }
+
+  init() {
+    // this.elements.forEach(i => i.addEventListener('click', this.clickHandler))
+    document.body.addEventListener('click', this.clickHandler)
   }
 
   /**
@@ -123,20 +126,25 @@ class ViewSectionScroll {
    * @param {MouseEvent} e - click event object
    * @returns 
    */
-  #clickHandler(e) {
+  clickHandler(e) {
+    console.log('log')
+    const el = e.target.closest('[data-scroll-to]');
+    if (!el) return; // Click outside elements should be ignored
+
     e.preventDefault();
-    const attr = e.target.getAttribute('data-scroll-to')
-    if (attr === '') {
-      document.body.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      })
-    } else {
-      document.getElementById(attr).scrollIntoView({
-        behavior: "smooth",
-        block: "start",  // "start", "center", "end", "nearest"
-        inline: "nearest", // For horizontal scrolling
-      })
+    const attr    = e.target.getAttribute('data-scroll-to')
+
+    const target  = document.getElementById(attr);
+
+    if (!target) {
+      document.body.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return
     }
+
+    target.scrollIntoView({
+      behavior  : "smooth",
+      block     : "start",  // "start", "center", "end", "nearest"
+      inline    : "nearest", // For horizontal scrolling
+    })
   }
 }

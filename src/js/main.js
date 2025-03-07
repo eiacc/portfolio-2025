@@ -10,7 +10,9 @@ window.addEventListener("DOMContentLoaded", async() => {
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom easing function (optional)
   });
 
-  new ViewSectionScroll('[data-scroll-to]')
+  const scrollIntoView = new ViewSectionScroll('[data-scroll-to]')
+  scrollIntoView.init()
+
   const cursor = new CustomCursor('cursor')
   cursor.hover('[data-cursor-size]')
 
