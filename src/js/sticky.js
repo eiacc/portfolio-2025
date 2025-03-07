@@ -238,11 +238,12 @@ class StickyScroll {
 class StickySection {
   props = [];
   lastScrollY = 0;
+  isIntersecting = false;
 
   constructor(parent_tag, child_tag, dot_tag) {
-    this.parent   = document.querySelector(parent_tag);
-    this.child    = document.querySelector(child_tag)
-    this.dot      = document.querySelector(dot_tag)
+    this.parent = document.querySelector(parent_tag);
+    this.child = document.querySelector(child_tag);
+    this.dot = document.querySelector(dot_tag);
 
     if (!this.parent || !this.child || !this.dot) {
       console.error('Parent/Child/Dot is null');
@@ -250,110 +251,81 @@ class StickySection {
     }
 
     this.lastScrollY = window.scrollY;
-    this.children = [...this.parent.querySelectorAll('[data-transform]')];
+    this.children = Array.from(this.parent.querySelectorAll('[data-transform]'));
+    if (this.children.length === 0) return;
 
     this.scroll = this.scroll.bind(this);
-    this.init(); // Initialize child properties
+    this.init();
 
     this.observer = new IntersectionObserver(this.onIntersect.bind(this), {
-      root: null, // Observe within viewport
-      threshold: 1 // Trigger when at least 10% of parent is visible
+      root: null,
+      threshold: 1
     });
 
     this.observer.observe(this.child);
+    window.addEventListener('scroll', this.scroll);
   }
 
   init() {
-    if (this.children.length < 1) return;
+    const parentRect = this.parent.getBoundingClientRect();
 
     this.children.forEach(child => {
-      const parentRect = this.parent.getBoundingClientRect();
       const childRect = child.getBoundingClientRect();
-
       let childCurrentPos = childRect.top - parentRect.top;
-      let ph = parentRect.height / (Math.random() * (4 - 2) + 2);
-      let ch = childRect.height / (Math.random() * (4 - 2) + 2);
-      let childTargetPos = Math.random() * (21 - 3) + 3;
-      let speed = Math.random() * (0.03 - 0.01) + 0.01;
 
       this.props.push({
         el: child,
         initialPos: childCurrentPos,
-        targetPos: childTargetPos,
-        speed,
+        targetPos: 15, // Fixed instead of random
+        speed: 0.02, // Fixed speed for smoother animation
         tempY: 0
       });
     });
   }
 
   scroll() {
-    if (this.props.length < 1) return;
+    if (!this.isIntersecting) return;
 
-    let currentScrollY = window.scrollY;
-    const isGoingUp = this.scrollState(currentScrollY);
-    this.lastScrollY = currentScrollY;
+    requestAnimationFrame(() => {
+      let currentScrollY = window.scrollY;
+      const isGoingUp = this.isScrollingUp(currentScrollY);
+      this.lastScrollY = currentScrollY;
 
-    this.props.forEach(prop => {
-      let tempY = (prop.initialPos + prop.targetPos) * prop.speed;
+      this.props.forEach(prop => {
+        let tempY = (prop.initialPos + prop.targetPos) * prop.speed;
+        prop.tempY = isGoingUp ? Math.max(prop.tempY - tempY, 0) : prop.tempY + tempY;
+        prop.el.style.transform = `translateY(${prop.tempY}px)`;
+      });
 
-      if (isGoingUp) {
-        // Ensure it doesn't go above its original Y position
-        prop.tempY = Math.max(prop.tempY - tempY, 0);
-      } else {
-        prop.tempY += tempY;
+      // Circle movement
+      const tempY = this.getScrollPercentage();
+      if (tempY >= 15) {
+        const mapYScroll = this.mapScroll(45, tempY);
+        this.dot.style.setProperty('--perc', `${mapYScroll}%`);
       }
-
-      prop.el.style.transform = `translateY(${prop.tempY}px)`;
     });
-
-    // circle
-    // const p = this.parent.getBoundingClientRect()
-    // const c = this.child.getBoundingClientRect()
-    const tempY = this.getScrollPercentage()
-    if (tempY >= 15) {
-      const mapYScroll = this.mapScroll(45, tempY)
-      console.log('y', mapYScroll)
-      this.dot.style.setProperty('--perc', mapYScroll + '%')
-    }
   }
 
   getScrollPercentage() {
-    const parentRect    = this.parent.getBoundingClientRect();
-    const parentHeight  = this.parent.offsetHeight; // Actual rendered height in pixels
+    const parentRect = this.parent.getBoundingClientRect();
+    const parentHeight = this.parent.offsetHeight;
+    const scrollInsideParent = -parentRect.top; // Keep negative value
 
-    // Amount scrolled inside parent
-    const scrollInsideParent = Math.abs(parentRect.top);
-
-    // Normalize to percentage
     let percent = (scrollInsideParent / (parentHeight - window.innerHeight)) * 100;
-
-    // Clamp between 0% and 100%
     return Math.round(Math.max(0, Math.min(100, percent)));
   }
 
   mapScroll(min, scrollPercentage) {
-    const minScroll = min; // 20% of parent scroll is 0% of `m`
-    const maxScroll = 100; // 100% of parent scroll is 100% of `m`
-
-    // Normalize scrollPerc to the `m` range (0% to 100%)
-    let m = ((scrollPercentage - minScroll) / (maxScroll - minScroll)) * 100;
-
-    // Clamp between 0% and 100%
+    let m = ((scrollPercentage - min) / (100 - min)) * 100;
     return Math.round(Math.max(0, Math.min(100, m)));
   }
 
-  scrollState(currentScrollY) {
+  isScrollingUp(currentScrollY) {
     return currentScrollY < this.lastScrollY;
   }
 
   onIntersect(entries) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        window.addEventListener('scroll', this.scroll);
-      } else {
-        window.removeEventListener('scroll', this.scroll);
-      }
-    });
+    this.isIntersecting = entries.some(entry => entry.isIntersecting);
   }
 
   destroy() {
