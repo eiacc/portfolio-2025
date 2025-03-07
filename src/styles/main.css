@@ -112,7 +112,7 @@ header a {
 
 /* parallax */
 .parallax-container {
-  --height: 175vh;
+  --height: 275vh;
   height: var(--height);
 }
 

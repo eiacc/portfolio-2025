@@ -1,7 +1,7 @@
 [data-dot] {
   --perc: 0%;
   clip-path: circle(var(--perc) at 50% 50%);
-  background: #000000;
+  background: #00000013;
   height: 100%;
   width: 100%;
   z-index: 100;
