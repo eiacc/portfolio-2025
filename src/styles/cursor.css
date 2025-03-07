@@ -29,13 +29,15 @@ a {
   z-index: 105;
 }
 
-#cursor.hover-sm {
-  transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(2.5);
-}
-
-#cursor.hover-xl {
-  transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(10);
-}
+#cursor.cursor-size-2 { transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(2); }
+#cursor.cursor-size-3 { transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(3); }
+#cursor.cursor-size-4 { transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(4); }
+#cursor.cursor-size-5 { transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(5); }
+#cursor.cursor-size-6 { transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(6); }
+#cursor.cursor-size-7 { transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(7); }
+#cursor.cursor-size-8 { transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(8); }
+#cursor.cursor-size-9 { transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(9); }
+#cursor.cursor-size-10 { transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(10); }
 
 @supports not (mix-blend-mode: difference) {
   #cursor {

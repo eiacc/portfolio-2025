@@ -1,5 +1,6 @@
 .h-screen { height: 100vh ;}
 .h-screen-\[300vh\] { height: 300vh ;}
+.h-full { height: 100%; }
 .text-center { text-align: center; }
 .flex { display: flex; }
 .justify-end { justify-content: flex-end; }
@@ -19,3 +20,4 @@
 .text-md {font-size: 18px;}
 .text-lg {font-size: 20px;}
 .text-xl {font-size: 24px;}
+.relative {position: relative;}

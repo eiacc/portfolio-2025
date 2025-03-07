@@ -11,7 +11,7 @@ let elements = {
 }
 
 export function observeBanner() {
-  const loader = document.getElementById("loader");
+  const preloader = document.querySelector("[data-preloader]");
   const container = document.querySelector(".banner");
   // showBoundary(container, true)
   showBoundary(container)
@@ -21,23 +21,25 @@ export function observeBanner() {
     return;
   }
 
-  const observer = new IntersectionObserver(handleIntersection(loader), { threshold: 0.1 });
+  const observer = new IntersectionObserver(handleIntersection(preloader), { threshold: 0.1 });
   observer.observe(container);
 
-  // 🔥 MutationObserver to track when loader finishes
-  const mutationObserver = new MutationObserver(() => handleMutation(loader, container, observer, mutationObserver));
-  mutationObserver.observe(loader, { attributes: true, attributeFilter: ["data-loading"] });
+  // 🔥 MutationObserver to track when preloader finishes
+  const mutationObserver = new MutationObserver(() => handleMutation(preloader, container, observer, mutationObserver));
+  mutationObserver.observe(preloader, { attributes: true, attributeFilter: ["data-loading"] });
+
+  // document.body.style.overflow = "unset"
 }
 
 /**
  * Intersection Observer Callback
  * 
- * @param {HTMLElement} loader = Loader's container
+ * @param {HTMLElement} preloader = preloader's container
  */
-function handleIntersection(loader) {
+function handleIntersection(preloader) {
   return (entries) => {
     entries.forEach((entry) => {
-      const isLoading = loader.getAttribute("data-loading") === "true";
+      const isLoading = preloader.getAttribute("data-loading") === "true";
       
       if (!isLoading && entry.isIntersecting) {
         const { y, height } = entry.boundingClientRect;
@@ -64,14 +66,14 @@ function handleIntersection(loader) {
 /**
  * Handles mutation observer logic.
  * 
- * @param {HTMLElement} loader - Loader's container
+ * @param {HTMLElement} preloader - preloader's container
  * @param {HTMLElement} container - Section we want to observe
  * @param {IntersectionObserver} observer - The IntersectionObserver instance
  * @param {MutationObserver} mutationObserver - The MutationObserver instance
  */
-function handleMutation(loader, container, observer, mutationObserver) {
-  if (loader.getAttribute("data-loading") === "false") {
-    console.log("🚀 Loader finished, re-running observer!");
+function handleMutation(preloader, container, observer, mutationObserver) {
+  if (preloader.getAttribute("data-loading") === "false") {
+    console.log("🚀 preloader finished, re-running observer!");
     observer.disconnect();
     observer.observe(container);
     mutationObserver.disconnect(); // Stop observing once done
@@ -91,7 +93,7 @@ function showBoundary(container, state = false) {
 
 function loopElements() {
   const elementsContainer = document.querySelectorAll('[data-fade-down]');
-  const elementCountInsideContainer = 7;
+  const elementCountInsideContainer = elementsContainer.length;
   const transformSpeed = 175 * elementCountInsideContainer
 
   elementsContainer.forEach(el => {
@@ -100,7 +102,7 @@ function loopElements() {
     const innerElements = el.querySelectorAll("*");
     innerElements.forEach(tag => {
       tag.style.transition = `transform ${transformSpeed}ms cubic-bezier(0.25, 1, 0.5, 1) ${delay}ms`; // 🔥 Delay in ms
-      tag.style.transform = "translateY(0%)";
+      tag.style.transform   = "translateY(0%)";
       delay += 100; // 🔥 Increase delay by 500ms (0.5s)
     });
   });
