@@ -11,4 +11,6 @@
   transform: translate(-50%, -50%);
   display: block;
   transition: clip-path 300ms ease;
+  pointer-events: none;
+  cursor: default;
 }
