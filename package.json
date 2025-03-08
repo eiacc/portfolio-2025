@@ -3,15 +3,19 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "optimize": "bun run index.ts"
+    "start": "bunx concurrently \"bun run bundle.ts\" \"bun run server.ts\" \"ngrok http --url=concise-trusty-gelding.ngrok-free.app 3000\"",
+    "dev": "bunx concurrently \"bun run bundle.ts\" \"bun run server.ts\"",
+    "bundle": "bun run bundle.ts"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/qrcode-terminal": "^0.12.2"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "esbuild": "^0.25.0"
+    "esbuild": "^0.25.0",
+    "qrcode-terminal": "^0.12.0"
   }
 }
