@@ -182,19 +182,19 @@ header a {
 .parallax__img:nth-of-type(2) {
   left: 3%;
   bottom: 75%;
-  opacity: 0;
+  display: none;
 }
 
 .parallax__img:nth-of-type(3) {
   left: 15%;
   top: 68%;
-  opacity: 0;
+  display: none;
 }
 
 .parallax__img:nth-of-type(4) {
   right: 6%;
   top: 3%;
-  opacity: 0;
+  display: none;
 }
 
 .parallax__img:nth-of-type(5) {
@@ -210,7 +210,7 @@ header a {
 .parallax__img:nth-of-type(7) {
   top: 0%;
   left: -10%;
-  opacity: 0;
+  display: none;
 }
 
 /* project links */
