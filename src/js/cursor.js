@@ -1,14 +1,21 @@
-/** make sure we have cursor.css for styling */
+/** 
+ * This class handles the animation for shadow cursor that follows the actual cursor.
+ * The animation includes the following:
+ *    hover: scales up/down the size of shadow cursor
+ *    movement: the cursor's movement
+ * 
+ * Disable this animation on smaller screen sizes (table, phones)
+ * 
+ * Other deps needed:
+ *  css: cursor.css
+ *  tag: html element for the shadow cursor should have an id
+ * 
+ * */
 class CustomCursor {
   cursor;
   #elements;
 
   constructor(tag) {
-    if (window.innerWidth < 768) {
-      console.log('custom cursor disabled for phone')
-      return
-    }
-
     this.cursor = document.getElementById(tag);
 
     if (!this.cursor) {
@@ -19,9 +26,6 @@ class CustomCursor {
     this.pos    = { x: 0, y: 0 };
     this.mouse  = { x: 0, y: 0 };
     this.speed  = 0.1;
-
-    // this.enter = this.enter.bind(this);
-    // this.leave = this.leave.bind(this)
 
     this.move = this.move.bind(this)
     window.addEventListener('mousemove', this.move)
@@ -36,10 +40,6 @@ class CustomCursor {
    * @param {MouseEvent} e 
    */
   move(e) {
-    if (window.innerWidth < 768) {
-      console.log('custom cursor disabled for phone')
-      return
-    }
     this.mouse.x = e.clientX;
     this.mouse.y = e.clientY;
   }
@@ -50,10 +50,6 @@ class CustomCursor {
    * @private
    */
   #enter = (e) => {
-    if (window.innerWidth < 768) {
-      console.log('custom cursor disabled for phone')
-      return
-    }
     const attr = e.target.getAttribute('data-cursor-size')
     this.cursor.classList.add(`cursor-size-${attr}`);
   };
@@ -64,10 +60,6 @@ class CustomCursor {
    * @private
    */
   #leave = (e) => {
-    if (window.innerWidth < 768) {
-      console.log('custom cursor disabled for phone')
-      return
-    }
     const attr = e.target.getAttribute('data-cursor-size')
     this.cursor.classList.remove(`cursor-size-${attr}`);
   };
@@ -76,10 +68,10 @@ class CustomCursor {
    * @param {string} tag - element selector
    */
   hover(tag) {
-    if (window.innerWidth < 768) {
-      console.log('custom cursor disabled for phone')
-      return
-    }
+    // if (window.innerWidth < 768) {
+    //   console.log('custom cursor disabled for phone')
+    //   return
+    // }
     this.#elements = document.querySelectorAll(tag)
 
     if (this.#elements.length < 1) {
@@ -97,8 +89,8 @@ class CustomCursor {
     this.pos.x += (this.mouse.x - this.pos.x) * this.speed;
     this.pos.y += (this.mouse.y - this.pos.y) * this.speed;
 
-    this.cursor.style.setProperty("--x", `${this.pos.x}px`);
-    this.cursor.style.setProperty("--y", `${this.pos.y}px`);
+    this.cursor.style.setProperty("--x", `${(this.pos.x).toFixed(2)}px`);
+    this.cursor.style.setProperty("--y", `${(this.pos.y).toFixed(2)}px`);
 
     requestAnimationFrame(this.animate);
   }
