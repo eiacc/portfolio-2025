@@ -59,7 +59,7 @@ header a {
 .banner {
   --pad-x: 16px;
   --pad-y: 68px;
-  --height: 75vh;
+  --height: 85vh;
 
   padding-inline: var(--pad-x);
   padding-block-start: var(--pad-y); /* distance from header */
