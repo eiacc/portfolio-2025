@@ -31,14 +31,15 @@
     max-width: calc(100% / 1.75);
   }
 
-  /* .parallax__img:nth-of-type(1) {
-    right: 16px;
-    bottom: 46px;
+  .parallax__img:nth-of-type(1) {
+    right: 1%;
+    bottom: 10%;
   }
   
   .parallax__img:nth-of-type(2) {
-    left: 35%;
-    bottom: 24%;
+    left: 1%;
+    bottom: -2%;
+    opacity: 1;
   }
   
   .parallax__img:nth-of-type(3) {
@@ -54,19 +55,19 @@
   
   .parallax__img:nth-of-type(5) {
     left: 36px;
-    top: 136px;
+    top: 10%;
   }
   
   .parallax__img:nth-of-type(6) {
-    right: 31%;
-    top: 18%;
+    right: -11%;
+    top: 5%;
   }
   
   .parallax__img:nth-of-type(7) {
-    display: block;
-    top: 0%;
-    left: 28.47%;
-  } */
+    top: 25%;
+    left: 45%;
+    opacity: 1;
+  }
 
   .works {
     --pad-yt: 62px;
@@ -106,6 +107,48 @@
   }
 
   .banner p { font-size: 18px; }
+
+  .parallax__img {
+    max-width: calc(100% / 1.5);
+  }
+
+  .parallax__img:nth-of-type(1) {
+    right: 16px;
+    bottom: 46px;
+    max-width: calc(100% / 1.5);
+  }
+
+  .parallax__img:nth-of-type(2) {
+    left: 35%;
+    bottom: 24%
+  }
+
+  .parallax__img:nth-of-type(3) {
+    left: 15%;
+    top: 68%;
+    opacity: 1;
+  }
+
+  .parallax__img:nth-of-type(4) {
+    right: 11.81%;
+    top: 28px;
+    opacity: 1;
+  }
+
+  .parallax__img:nth-of-type(5) {
+    left: 36px;
+    top: 136px
+  }
+
+  .parallax__img:nth-of-type(6) {
+    right: 31%;
+    top: 18%
+  }
+
+  .parallax__img:nth-of-type(7) {
+    top: 0%;
+    left: 28.47%
+  }
 
   .works { 
     --pad-x: 36px; 
