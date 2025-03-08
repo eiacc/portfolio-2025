@@ -2,9 +2,14 @@
   overflow: hidden;
 }
 
-[data-fade-up] * {
+[data-fade-up] > * {
   transition: translateY 0.6s cubic-bezier(0.25, 1, 0.5, 1);
   transform: translateY(100%);
+}
+
+[data-fade] {
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
 
 [data-fade-down] {
