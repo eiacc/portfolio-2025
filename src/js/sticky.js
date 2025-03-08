@@ -36,19 +36,23 @@ class StickySection {
 
     this.observer = new IntersectionObserver(this.onIntersect.bind(this), {
       root: null,
-      threshold: 0.2, // Reduced sensitivity
+      threshold: 0.8, // Reduced sensitivity
     });
 
     this.observer.observe(this.child);
     window.addEventListener("scroll", this.onScroll.bind(this), { passive: true });
+
+    this.dependency = () => {};
   }
 
-  init() {
+  init(dependency) {
+    if (dependency && typeof dependency === "function") this.dependency = dependency
+
     this.children.forEach((child) => {
       this.props.push({
         el: child,
         initialPos: 0,
-        targetPos: 15, // Fixed instead of random
+        targetPos: Math.random() * (100 - 25) + 25, // Fixed instead of random
         speed: Math.random() * (0.04 - 0.02) + 0.02, // Fixed speed for smoother animation
         tempY: 0,
       });
@@ -108,7 +112,13 @@ class StickySection {
   }
 
   onIntersect(entries) {
-    this.isIntersecting = entries.some((entry) => entry.isIntersecting);
+    this.isIntersecting = entries.some((entry) => {
+      if (!this.isIntersecting && entry.isIntersecting) {
+        this.dependency() // run animation
+      }
+
+      return entry.isIntersecting
+    });
   }
 
   destroy() {

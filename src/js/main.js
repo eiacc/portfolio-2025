@@ -29,6 +29,9 @@ window.addEventListener("load", async() => {
     });
   }
 
-  const stickySection = new StickySection('[data-sticky-section]', '[data-transform-container]', '[data-dot]')
-  stickySection.init();
+  const parallaxImagesAnim        = new Animations('[data-fade]', '#parallaxContainer', 175, 50)
+  const parallaxImagesAnimAsDeps  = parallaxImagesAnim.opacity()
+
+  const stickySection             = new StickySection('[data-sticky-section]', '[data-transform-container]', '[data-dot]')
+  stickySection.init(parallaxImagesAnimAsDeps);
 });
