@@ -39,6 +39,22 @@ a {
 #cursor.cursor-size-9 { transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(9); }
 #cursor.cursor-size-10 { transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(10); }
 
+#cursor.cursor-size-max-enter { 
+  mix-blend-mode: unset;
+  background: var(--clr-dark);
+  z-index: 105;
+  transition: all 600ms ease;
+  transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(200); 
+}
+
+#cursor.cursor-size-max-exit {
+  mix-blend-mode: difference;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 110;
+  transition: all 200ms ease;
+  transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(1); 
+}
+
 @supports not (mix-blend-mode: difference) {
   #cursor {
     mix-blend-mode: exclusion; /* Fallback */

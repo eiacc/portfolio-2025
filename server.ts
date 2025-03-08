@@ -1,4 +1,4 @@
-import { serve } from "bun";
+import { file, serve } from "bun";
 import { readFile } from "fs/promises";
 import { existsSync } from "fs";
 import { extname } from "path";
@@ -41,6 +41,8 @@ const server = serve({
     if (url.pathname === "/" || url.pathname.endsWith("/")) {
       filePath += "index.html";
     }
+
+    // console.log('file path', filePath)
 
     // Check if file exists
     if (!existsSync(filePath)) {

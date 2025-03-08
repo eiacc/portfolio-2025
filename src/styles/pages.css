@@ -1,0 +1,32 @@
+.page {
+  background-color: var(--clr-dark);
+  padding: 124px 16px;
+  min-height: 100vh;
+  color: var(--clr-light);
+}
+
+.page__title {
+  font-size: 2rem;
+  margin-block-end: 1.25rem;
+  text-transform: uppercase;
+}
+
+.page__description {
+  font-size: 0.75rem;
+}
+
+.page__site {
+  height: 100%;
+  width: 100%;
+  background-color: orange;
+  padding-bottom: 40%;
+  position: relative;
+}
+
+.page__site-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}

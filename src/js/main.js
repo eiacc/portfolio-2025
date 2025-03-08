@@ -1,3 +1,5 @@
+// Find memory leaks - https://www.youtube.com/watch?v=gQkwkLxuLMc
+
 window.addEventListener("load", async() => {
   Loader();
   document.addEventListener("LoaderFinished", init) // LoaderFinished is a custom event located at loader.js file
@@ -43,4 +45,11 @@ function init() {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom easing function (optional)
     });
   }
+
+  // TODO: fix this code and indexeddb.js
+  const works = document.getElementsByClassName('work')
+  Array.from(works).forEach(work => {
+    work.addEventListener('click', expandWork)
+    work.addEventListener('mouseenter', debouncedFetchingPage, { once: true }) // fetch only once 
+  })
 }
