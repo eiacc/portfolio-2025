@@ -3,14 +3,16 @@ import path from "path";
 import fs from "fs";
 import { transform } from "esbuild";
 
-const jsDir: string = "src/js";
-const stylesDir: string = "src/styles"; 
-const outputDir: string = "dist"; 
-const outputCSSFile: string = path.join(outputDir, "styles.min.css");
-const outputJSFile: string = path.join(outputDir, "script.min.js");
-const publicDir: string = "public";
-const indexFile: string = "index.html"; // Root-level index.html file
-const destDir: string = path.join(outputDir, "public");
+const jsDir: string           = "src/js";
+const stylesDir: string       = "src/styles"; 
+const outputDir: string       = "dist"; 
+const outputCSSFile: string   = path.join(outputDir, "styles.min.css");
+const outputJSFile: string    = path.join(outputDir, "script.min.js");
+const publicDir: string       = "public";
+const pagesDir: string        = "pages";
+const indexFile: string       = "index.html"; // Root-level index.html file
+const destPublicDir: string   = path.join(outputDir, "public");
+const destPagesDir: string    = path.join(outputDir, "pages");
 
 (async () => {
   try {
@@ -26,7 +28,8 @@ const destDir: string = path.join(outputDir, "public");
     await optimize("css", stylesDir, outputCSSFile);
     await optimize("js", jsDir, outputJSFile);
     await copyIndexFile();
-    await copyPublicDir(publicDir, destDir);
+    await copyPublicDir(publicDir, destPublicDir);
+    await copyPublicDir(pagesDir, destPagesDir);
   } catch (error) {
     console.error("❌ Build failed:", error);
   }
