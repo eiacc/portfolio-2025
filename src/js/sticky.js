@@ -81,7 +81,7 @@ class StickySection {
 
     // Circle movement
     const tempY = this.getScrollPercentage();
-    const mapYScroll = this.mapScroll(45, tempY);
+    const mapYScroll = this.mapScroll(10, tempY);
     this.dot.style.setProperty("--scale", `${mapYScroll}%`);
   }
 

@@ -9,6 +9,7 @@
   top: 50%;
   left: 50%;
   display: block;
+  transform: translate(-50%, -50%);
   transition: clip-path 125ms ease;
   pointer-events: none;
   cursor: default;
