@@ -91,6 +91,14 @@
   .work__content.work__content--duplicate svg {
     width: 24px;
   }
+
+  .marquee__content-title { font-size: 3rem; }
+  .marquee__content-description { font-size: 14px; }
+  .marquee__inner { gap: 16px; }
+
+  .certificate__wrapper {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -166,7 +174,10 @@
   }
 
   .marquee { --pad-x: 36px; }
-  .marquee__inner { --width: 50%; }
+  .marquee__content-description { font-size: 16px; }
+  /* .marquee__inner { --width: 50%; } */
+  .marquee__inner { gap: 24px; }
+
 
   footer {
     --pad-x: 36px;
