@@ -18,7 +18,7 @@
         position: fixed;
         top: 0;
         left: 0;
-        background-color: #f5f5f5;
+        /* background-color: #f5f5f5; */
         overflow: hidden;
         z-index: 999;
       }
@@ -104,11 +104,11 @@
   <body>
     <div id="cursor"></div>
 
-    <!-- loader -->
+  <!-- loader -->
     <div data-preloader="true">
       <div data-preloader-line></div>
       <div data-preloader-blinders></div>
-      <svg data-preloader-svg title="tatsuya" viewBox="0 0 1200 155" xmlns="http://www.w3.org/2000/svg">
+      <!-- <svg data-preloader-svg title="tatsuya" viewBox="0 0 1200 155" xmlns="http://www.w3.org/2000/svg">
         <path d="M173.777 2.15278V49.5139H113.157V152.847H60.6198V49.5139H0V2.15278H173.777Z" />
         <path d="M282.837 152.847L273.138 125.722H212.922L203.223 152.847H145.432L204.031 2.15278H282.029L340.628 152.847H282.837ZM226.663 86.9722H259.397L243.03 40.9028L226.663 86.9722Z" />
         <path d="M484.177 2.15278V49.5139H423.557V152.847H371.02V49.5139H310.4V2.15278H484.177Z" />
@@ -116,7 +116,7 @@
         <path d="M850.761 77.2847C850.761 129.597 823.886 155 761.852 155C699.615 155 672.943 129.813 672.943 77.2847V2.15278H725.48V77.2847C725.48 93.4306 730.936 107.639 761.852 107.639C792.768 107.639 798.223 93.2153 798.223 77.2847V2.15278H850.761V77.2847Z" />
         <path d="M926.769 103.333L854.833 2.15278H915.453L953.038 58.125L990.622 2.15278H1051.24L979.306 103.333V152.847H926.769V103.333Z" />
         <path d="M1142.21 152.847L1132.51 125.722H1072.29L1062.6 152.847H1004.8L1063.4 2.15278H1141.4L1200 152.847H1142.21ZM1086.03 86.9722H1118.77L1102.4 40.9028L1086.03 86.9722Z" />
-      </svg>
+      </svg> -->
     </div>
 
     <!-- header -->
@@ -134,7 +134,7 @@
       <main>
         <section data-model id="banner" class="banner">
           <div class="banner__logo">
-            <svg style="transition: all 1000ms ease" data-cursor-size="10" title="tatsuya" viewBox="0 0 1200 155" xmlns="http://www.w3.org/2000/svg">
+            <svg data-fade-down style="transition: all 1000ms ease" data-cursor-size="10" title="tatsuya" viewBox="0 0 1200 155" xmlns="http://www.w3.org/2000/svg">
               <path d="M173.777 2.15278V49.5139H113.157V152.847H60.6198V49.5139H0V2.15278H173.777Z" />
               <path d="M282.837 152.847L273.138 125.722H212.922L203.223 152.847H145.432L204.031 2.15278H282.029L340.628 152.847H282.837ZM226.663 86.9722H259.397L243.03 40.9028L226.663 86.9722Z" />
               <path d="M484.177 2.15278V49.5139H423.557V152.847H371.02V49.5139H310.4V2.15278H484.177Z" />
@@ -146,15 +146,15 @@
           </div>
   
           <div class="banner__content">
-            <div>
+            <div data-fade>
               <p>*From:</p>
               <p class="banner__content-p-offset">Cebu, Philippines</p>
             </div>
-            <div>
+            <div data-fade>
               <p>*Status:</p>
               <p class="banner__content-p-offset">Developer</p>
             </div>
-            <div>
+            <div data-fade>
               <p>*Email:</p>
               <p class="banner__content-p-offset">tatsuya@matik.app</p>
             </div>
@@ -166,8 +166,8 @@
         <section data-model data-sticky-section class="parallax-container" id="parallaxContainer">
           <div class="parallax">
             <div class="relative w-full h-full flex justify-center items-center" data-transform-container>
-              <h2 data-cursor-size="8">WORKS</h2>
-              <div data-dot></div>
+              <h2 data-cursor-size="8">PROJECTS</h2>
+              <div data-dot data-cursor-size="8"></div>
   
               <img 
                 data-transform
@@ -176,7 +176,7 @@
                 data-transform-target-x="0"
                 data-transform-target-y="100"
                 data-transform-speed="0.04"
-                data-cursor-size="9" class="parallax__img" src="./public/assets/frame-1.png" alt="img-1">
+                data-cursor-size="9" class="parallax__img" src="./public/assets/frame-1.webp" alt="img-1">
               <img 
                 data-transform
                 data-transform-pos-x="0"
@@ -184,7 +184,7 @@
                 data-transform-target-x="0"
                 data-transform-target-y="23"
                 data-transform-speed="0.04"
-                data-cursor-size="9" class="parallax__img" src="./public/assets/frame-2.png" alt="img-2">
+                data-cursor-size="9" class="parallax__img" src="./public/assets/frame-2.webp" alt="img-2">
               <img 
                 data-transform
                 data-transform-pos-x="0"
@@ -192,7 +192,7 @@
                 data-transform-target-x="0"
                 data-transform-target-y="275"
                 data-transform-speed="0.1"
-                data-cursor-size="9" class="parallax__img" src="./public/assets/frame-3.png" alt="img-3">
+                data-cursor-size="9" class="parallax__img" src="./public/assets/frame-3.webp" alt="img-3">
               <img 
                 data-transform
                 data-transform-pos-x="0"
@@ -200,7 +200,7 @@
                 data-transform-target-x="0"
                 data-transform-target-y="0"
                 data-transform-speed="0.04"
-                data-cursor-size="9" class="parallax__img" src="./public/assets/frame-4.png" alt="img-4">
+                data-cursor-size="9" class="parallax__img" src="./public/assets/frame-4.webp" alt="img-4">
               <img
                 data-transform
                 data-transform-pos-x="0"
@@ -208,7 +208,7 @@
                 data-transform-target-x="0"
                 data-transform-target-y="0"
                 data-transform-speed="0.04"
-                data-cursor-size="9" class="parallax__img" src="./public/assets/frame-5.png" alt="img-5">
+                data-cursor-size="9" class="parallax__img" src="./public/assets/frame-5.webp" alt="img-5">
               <img 
                 data-transform
                 data-transform-pos-x="0"
@@ -216,7 +216,7 @@
                 data-transform-target-x="0"
                 data-transform-target-y="0"
                 data-transform-speed="0.04"
-                data-cursor-size="9" class="parallax__img" src="./public/assets/frame-6.png" alt="img-6">
+                data-cursor-size="9" class="parallax__img" src="./public/assets/frame-6.webp" alt="img-6">
               <img 
                 data-transform
                 data-transform-pos-x="0"
@@ -224,7 +224,7 @@
                 data-transform-target-x="0"
                 data-transform-target-y="0"
                 data-transform-speed="0.04"
-                data-cursor-size="9" class="parallax__img" src="./public/assets/frame-7.png" alt="img-7">
+                data-cursor-size="9" class="parallax__img" src="./public/assets/frame-7.webp" alt="img-7">
             </div>
           </div>
         </section>
@@ -242,7 +242,7 @@
                     Movidacare
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 23 22" class="list-item_arrow__VpscQ"><title>Diagonal Arrow</title><path stroke="#0E0E0E" stroke-width="3" d="m2 20.5 19-19m-15 0h15v15"></path></svg>
                   </p>
-                  <p class="work__field monument-black">Natural Deodorants</p>
+                  <p class="work__field monument-black">Ecommerce</p>
                 </div>
               </div>
             </div><!-- project end -->
@@ -257,7 +257,7 @@
                     Ecobin
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 23 22" class="list-item_arrow__VpscQ"><title>Diagonal Arrow</title><path stroke="#0E0E0E" stroke-width="3" d="m2 20.5 19-19m-15 0h15v15"></path></svg>
                   </p>
-                  <p class="work__field monument-black">Recycling Bins</p>
+                  <p class="work__field monument-black">Ecommerce</p>
                 </div>
               </div>
             </div><!-- project end -->
@@ -271,7 +271,7 @@
                     The Daily Male
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 23 22" class="list-item_arrow__VpscQ"><title>Diagonal Arrow</title><path stroke="#0E0E0E" stroke-width="3" d="m2 20.5 19-19m-15 0h15v15"></path></svg>
                   </p>
-                  <p class="work__field monument-black">Grooming</p>
+                  <p class="work__field monument-black">Ecommerce</p>
                 </div>
               </div>
             </div><!-- project end -->
@@ -301,7 +301,7 @@
                     SIEMES
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 23 22" class="list-item_arrow__VpscQ"><title>Diagonal Arrow</title><path stroke="#0E0E0E" stroke-width="3" d="m2 20.5 19-19m-15 0h15v15"></path></svg>
                   </p>
-                  <p class="work__field monument-black">Commerce CMS</p>
+                  <p class="work__field monument-black">SAAS</p>
                 </div>
               </div>
             </div><!-- project end -->
@@ -316,7 +316,7 @@
                     CUSTOMIZER
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 23 22" class="list-item_arrow__VpscQ"><title>Diagonal Arrow</title><path stroke="#0E0E0E" stroke-width="3" d="m2 20.5 19-19m-15 0h15v15"></path></svg>
                   </p>
-                  <p class="work__field monument-black">Sails</p>
+                  <p class="work__field monument-black">Cuzto</p>
                 </div>
               </div>
             </div><!-- project end -->
@@ -360,14 +360,17 @@
       </main>
 
       <footer data-cursor-size="10" class="flex justify-end bg-black" id="footer">
-        <svg title="tatsuya" viewBox="0 0 1200 155" xmlns="http://www.w3.org/2000/svg">
-          <path data-letter="t" d="M173.777 2.15278V49.5139H113.157V152.847H60.6198V49.5139H0V2.15278H173.777Z" />
-          <path data-letter="a" d="M282.837 152.847L273.138 125.722H212.922L203.223 152.847H145.432L204.031 2.15278H282.029L340.628 152.847H282.837ZM226.663 86.9722H259.397L243.03 40.9028L226.663 86.9722Z" />
-          <path data-letter="t" d="M484.177 2.15278V49.5139H423.557V152.847H371.02V49.5139H310.4V2.15278H484.177Z" />
-          <path data-letter="s" d="M486.221 99.6736H538.758C538.758 106.993 545.224 111.944 578.565 111.944C609.683 111.944 614.331 109.792 614.331 104.194C614.331 97.7361 609.683 96.875 576.545 95.7986C512.692 93.6458 488.242 82.4514 488.242 47.3611C488.242 14.2083 518.754 0 574.524 0C629.688 0 660.806 14.2083 660.806 52.7431H608.269C608.269 44.7778 596.145 43.0556 570.483 43.0556C545.831 43.0556 540.779 44.3472 540.779 50.1597C540.779 55.9722 545.83 55.7569 576.545 57.0486C632.315 59.4167 666.868 63.5069 666.868 102.903C666.868 144.451 634.537 155 576.545 155C518.552 155 486.221 144.451 486.221 99.6736Z" />
-          <path data-letter="u" d="M850.761 77.2847C850.761 129.597 823.886 155 761.852 155C699.615 155 672.943 129.813 672.943 77.2847V2.15278H725.48V77.2847C725.48 93.4306 730.936 107.639 761.852 107.639C792.768 107.639 798.223 93.2153 798.223 77.2847V2.15278H850.761V77.2847Z" />
-          <path data-letter="y" d="M926.769 103.333L854.833 2.15278H915.453L953.038 58.125L990.622 2.15278H1051.24L979.306 103.333V152.847H926.769V103.333Z" />
-          <path data-letter="a" d="M1142.21 152.847L1132.51 125.722H1072.29L1062.6 152.847H1004.8L1063.4 2.15278H1141.4L1200 152.847H1142.21ZM1086.03 86.9722H1118.77L1102.4 40.9028L1086.03 86.9722Z" />
+        <svg viewBox="0 0 715 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <title>TATSUYA</title>
+          <path d="M74.4524 0.86111V19.8056H48.4806V61.1389H25.9718V19.8056H0V0.86111H74.4524Z" fill="white"/>
+          <path d="M135.043 0.86111H157.552V61.1389H135.043V40.4722H99.5483V61.1389H77.0394V0.86111H99.5483V21.5278H135.043V0.86111Z" fill="white"/>
+          <path d="M218.149 61.1389L213.994 50.2889H188.195L184.04 61.1389H159.28L184.386 0.86111H217.803L242.909 61.1389H218.149ZM194.082 34.7889H208.107L201.095 16.3611L194.082 34.7889Z" fill="white"/>
+          <path d="M304.411 0.86111V19.8056H278.439V61.1389H255.93V19.8056H229.958V0.86111H304.411Z" fill="white"/>
+          <path d="M305.287 39.8694H327.796C327.796 42.7972 330.566 44.7778 344.85 44.7778C358.182 44.7778 360.174 43.9167 360.174 41.6778C360.174 39.0944 358.182 38.75 343.985 38.3194C316.628 37.4583 306.152 32.9806 306.152 18.9444C306.152 5.68333 319.225 0 343.119 0C366.753 0 380.085 5.68333 380.085 21.0972H357.576C357.576 17.9111 352.382 17.2222 341.387 17.2222C330.826 17.2222 328.661 17.7389 328.661 20.0639C328.661 22.3889 330.826 22.3028 343.985 22.8194C367.879 23.7667 382.683 25.4028 382.683 41.1611C382.683 57.7806 368.831 62 343.985 62C319.138 62 305.287 57.7806 305.287 39.8694Z" fill="white"/>
+          <path d="M461.469 30.9139C461.469 51.8389 449.955 62 423.377 62C396.713 62 385.285 51.925 385.285 30.9139V0.86111H407.794V30.9139C407.794 37.3722 410.131 43.0556 423.377 43.0556C436.623 43.0556 438.96 37.2861 438.96 30.9139V0.86111H461.469V30.9139Z" fill="white"/>
+          <path d="M494.034 41.3333L463.214 0.86111H489.186L505.288 23.25L521.391 0.86111H547.362L516.543 41.3333V61.1389H494.034V41.3333Z" fill="white"/>
+          <path d="M607.134 0.86111H629.643V61.1389H607.134V40.4722H571.639V61.1389H549.13V0.86111H571.639V21.5278H607.134V0.86111Z" fill="white"/>
+          <path d="M690.24 61.1389L686.085 50.2889H660.286L656.131 61.1389H631.371L656.477 0.86111H689.894L715 61.1389H690.24ZM666.173 34.7889H680.198L673.186 16.3611L666.173 34.7889Z" fill="white"/>
         </svg>
       </footer>
     </div>
