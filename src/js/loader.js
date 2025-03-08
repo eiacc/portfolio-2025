@@ -1,33 +1,44 @@
 // run it after DOMContentLoaded
 function Loader() {
-  return new Promise((resolve) => {
-    const preloader = document.querySelector('[data-preloader]')
-    const line      = document.querySelector('[data-preloader-line]')
-    const blinders  = document.querySelector('[data-preloader-blinders]')
-    const svg       = document.querySelector('[data-preloader-svg]')
+  const preloader = document.querySelector('[data-preloader]');
+  const line = document.querySelector('[data-preloader-line]');
+  const blinders = document.querySelector('[data-preloader-blinders]');
 
-    line.setAttribute('data-preloader-line', true)
-    setTimeout(() => {
-      blinders.setAttribute('data-preloader-blinders', false)
-    }, 501)
+  if (!preloader || !line || !blinders) {
+    console.warn('Missing required elements: preloader, line, or blinders');
+    return;
+  }
 
-    setTimeout(() => {
-      line.style.opacity = 0;
-    }, 800)
+  line.setAttribute('data-preloader-line', 'true');
 
-    setTimeout(() => {
-      blinders.setAttribute('data-preloader-blinders', true)
-      // svg.setAttribute('data-preloader-svg', true)
-    }, 801)
+  setTimeout(() => {
+    if (blinders) {
+      blinders.setAttribute('data-preloader-blinders', 'false');
+    }
+  }, 501);
 
-    setTimeout(() => {
-      preloader.style.zIndex    = '-1';
-      preloader.style.display   = 'none';
-      preloader.setAttribute('data-preloader', 'false')
-      document.body.style.overflow = "unset"
-      resolve(true)
-    }, 801 + 1000 + 165) // svg transition speed + delay
-  })
+  setTimeout(() => {
+    if (line) {
+      line.style.opacity = '0';
+    }
+  }, 800);
+
+  setTimeout(() => {
+    if (blinders) {
+      blinders.setAttribute('data-preloader-blinders', 'true');
+    }
+  }, 801);
+
+  setTimeout(() => {
+    if (preloader) {
+      preloader.style.zIndex = '-1';
+      preloader.style.display = 'none';
+      preloader.setAttribute('data-preloader', 'false');
+    }
+    document.body.style.overflow = 'unset';
+
+    document.dispatchEvent(new Event("LoaderFinished")); // Dispatch event
+  }, 801 + 1000 + 165);
 }
 
 class ObserveLoader {
