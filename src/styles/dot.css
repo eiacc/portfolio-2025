@@ -1,16 +1,15 @@
 [data-dot] {
   --scale: 0%;
-  /* clip-path: circle(var(--perc) at 50% 50%); */
-  background: #00000028;
+  clip-path: circle(var(--scale) at 50% 50%);
+  background: #000000;
   height: 100%;
   width: 100%;
   z-index: 5;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(var(--scale));
   display: block;
-  transition: transform 50ms ease;
+  transition: clip-path 125ms ease;
   pointer-events: none;
   cursor: default;
 }
