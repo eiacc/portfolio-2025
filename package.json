@@ -3,8 +3,8 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
-    "start": "bunx concurrently \"bun run bundle.ts\" \"bun run server.ts\" \"ngrok http --url=concise-trusty-gelding.ngrok-free.app 3000\"",
-    "dev": "bunx concurrently \"bun run bundle.ts\" \"bun run server.ts\"",
+    "start": "bunx concurrently \"bun run ./config/bundle.ts\" \"bun run ./config/server.staging.ts\" \"ngrok http --url=concise-trusty-gelding.ngrok-free.app 3000\"",
+    "dev": "bunx concurrently \"bun run ./config/bundle.ts\" \"bun run ./config/server.local.ts\"",
     "bundle": "bun run bundle.ts"
   },
   "devDependencies": {
