@@ -24,7 +24,7 @@
 
   .banner p { font-size: 16px; }
 
-  .parallax-container { --height: 275vh; }
+  .parallax-container { --height: 225vh; }
   .parallax h2 { --font-size: 5rem; }
 
   .parallax__img {
