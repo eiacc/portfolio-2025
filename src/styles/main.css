@@ -1,4 +1,5 @@
 :root {
+  --svh: 100vh;
   --clr-dark: #000000;
   --clr-dark-2: #141414;
   --clr-light: #f5f5f5;
@@ -34,6 +35,8 @@ h1 {
   display: flex;
   width: 100vw;
   height: 100vh;
+  height: 100svh;
+  height: 100dvh;
 }
 
 /* header */
@@ -97,7 +100,7 @@ header a {
   width: 100%;
 }
 
-.banner p {
+.banner * {
   font-family: var(--suisse-medium);
   font-size: 12px;
 }
@@ -128,6 +131,9 @@ header a {
   position: sticky;
   top: 0;
   height: 100vh;
+  height: 100svh;
+  height: 100dvh;
+
   width: 100%;
 
   display: grid;
@@ -370,6 +376,17 @@ footer {
   padding-inline: var(--pad-x);
   padding-block-start: 124px; /* distance from header */
   padding-block-end: 36px; /* distance from header */
+}
+
+#footer svg,
+#footer svg path {
+  fill: var(--clr-light)!important;
+}
+
+[data-link] {
+  color: #1065af;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 @media screen and (min-width: 1024px) {
