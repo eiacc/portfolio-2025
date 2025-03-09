@@ -94,7 +94,6 @@ header a {
 .banner__content > div {
   display: flex;
   padding-block: 8px;
-  border-bottom: 1px solid var(--clr-dark);
   width: 100%;
 }
 

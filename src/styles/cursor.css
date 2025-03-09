@@ -13,11 +13,14 @@ a {
 }
 
 #cursor {
-  --x: 0;
-  --y: 0;
+  --opacity: 0;
+  --x: -50%;
+  --y: -50%;
   --blend: difference;
   /* display: none; */
   position: fixed;
+  top: 50%;
+  left: 50%;
   width: 20px;
   height: 20px;
   background: rgba(255, 255, 255, 0.8);
@@ -27,6 +30,7 @@ a {
   transition: transform 0.2s ease-out;
   transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(1);
   z-index: 105;
+  opacity: var(--opacity);
 }
 
 #cursor.cursor-size-2 { transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(2); }
@@ -43,7 +47,7 @@ a {
   mix-blend-mode: unset;
   background: var(--clr-dark);
   z-index: 105;
-  transition: all 600ms ease;
+  transition: all 0.2s ease;
   transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(200); 
 }
 
@@ -56,11 +60,11 @@ a {
 }
 
 #cursor.cursor-size-max-exit {
-  mix-blend-mode: difference;
-  background: rgba(255, 255, 255, 0.8);
-  z-index: 110;
+  mix-blend-mode: unset;
+  background: var(--clr-light);
+  z-index: 115;
   transition: all 200ms ease;
-  transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(1); 
+  transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(500); 
 }
 
 @supports not (mix-blend-mode: difference) {
@@ -71,6 +75,10 @@ a {
 
 @media screen and (min-width: 768px) {
   #cursor {
-    /* display: block; */
+    --x: 0;
+    --y: 0;
+    --opacity: 1;
+    top: 0;
+    left: 0;
   }
 }

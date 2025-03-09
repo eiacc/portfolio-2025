@@ -6,7 +6,7 @@ class PageTransition {
   previousKeyViewed;
   previousHTML;
 
-  constructor(elements, dbInstance, lenis) {
+  constructor(elements, dbInstance) {
     this.elements = document.querySelectorAll(elements)
     if (this.elements.length < 1) return
 
@@ -15,7 +15,6 @@ class PageTransition {
     
     this.previousKeyViewed   = "";
     this.previousHTML  = "";
-    this.lenis  = lenis;
 
     this.closePageRendered = document.getElementById('closePageRender')
   }
@@ -109,56 +108,56 @@ class PageTransition {
     })
   }
 
-  popup(same = false) {
-    this.lenis.stop();
-
+  popup(samePage = false) {
     const popup = document.getElementById('pageRender');
-
     document.body.style.overflow = "hidden";
-    document.body.style.position = "fixed";
-    document.body.style.width = "100%";
 
-    if (!same) {
+    if (!samePage) {
+      const prevEl = popup.querySelector('.page__inner');
+      if (prevEl) prevEl.remove();
+
       const div = document.createElement('div')
-      div.innerHTML = JSON.parse(this.previousHTML);
-      const node = div.firstElementChild
-      popup.firstElementChild.appendChild(node);
+      div.innerHTML = JSON.parse(this.previousHTML)
+      const node = div.firstElementChild;
+
+      popup.firstElementChild.appendChild(node)
     }
 
     const cursor = document.getElementById('cursor');
+    if (window.innerWidth < 1024) cursor.style.setProperty('--opacity', 1)
     cursor.classList = "cursor-size-max-enter";
 
     setTimeout(() => {
       popup.setAttribute('data-visible', true);
-    }, 500)
+    }, 300)
 
     setTimeout(() => {
+      if (window.innerWidth < 1024) cursor.style.setProperty('--opacity', 0)
       cursor.classList = "cursor-size-max-enter-default"
-    }, 600)
+    }, 400)
   }
 
   popout() {
-    this.lenis.start();
-
     const popup = document.getElementById('pageRender');
     const cursor = document.getElementById('cursor');
 
-    cursor.classList = "cursor-size-max-enter";
-
-    popup.setAttribute('data-visible', false);
-
-    document.body.style.overflow  = "unset";
-    document.body.style.position  = "unset";
-    document.body.style.top       = "unset";
-
-    // const div = document.createElement('div')
-    // div.innerHTML = JSON.parse(this.previousHTML);
-    // const node = div.firstElementChild
-    // popup.firstElementChild.appendChild(node);
+    cursor.classList = "cursor-size-max-exit";
+    
+    if (window.innerWidth < 1024) {
+      popup.setAttribute('data-visible', false);
+      document.body.style.overflow  = "unset";
+      cursor.classList = ""
+      return
+    }
+    
+    setTimeout(() => {
+      popup.setAttribute('data-visible', false);
+      document.body.style.overflow  = "unset";
+    }, 300)
 
     setTimeout(() => {
       cursor.classList = ""
-    }, 150)
+    }, 400)
   }
 
   debounce(callback, delay = 200) {

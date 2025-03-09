@@ -28,7 +28,7 @@ class Animations {
   */
   stagger() {
     return (param) => {
-      console.log('test:', param)
+      // console.log('test:', param)
       if (this.container && this.elements && this.elements.length < 1) {
         console.warn("there are no elements to stagger")
         return

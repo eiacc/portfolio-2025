@@ -57,6 +57,7 @@ class ViewSectionScroll {
    * @returns 
    */
   clickHandler(e) {
+    e.preventDefault();
     console.log('log', e.target)
     const el = e.target.closest('[data-scroll-to]');
     if (!el) return; // Click outside elements should be ignored
