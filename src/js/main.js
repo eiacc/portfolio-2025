@@ -15,7 +15,16 @@ window.addEventListener("load", async() => {
 
 async function init(dbInstance) {
   // Smooth Scroll and Custom Cursor
-  if (window.innerWidth > 1024) cursorInit();
+  if (window.innerWidth > 1024) {
+    cursorInit()
+  };
+  const lenis = new Lenis({
+    autoRaf: true,
+    smooth: true,   // Enables smooth scrolling
+    lerp: 0.1,      // Lower = smoother, Higher = snappier
+    duration: 1,    // Adjusts scroll ease duration
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom easing function (optional)
+  });
 
   // Header Animations
   const headerAnim            = new Animations('[data-fade-down]', 'header', 500);
@@ -43,6 +52,6 @@ async function init(dbInstance) {
   const stickySection             = new StickySection('[data-sticky-section]', '[data-transform-container]', '[data-dot]')
   stickySection.init(parallaxImagesAnimAsDeps);
 
-  const worksEvent = new PageTransition('.work', dbInstance);
+  const worksEvent = new PageTransition('.work', dbInstance, lenis);
   await worksEvent.init()
 }

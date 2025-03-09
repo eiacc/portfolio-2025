@@ -6,13 +6,15 @@ class PageTransition {
   previousKeyViewed;
   previousHTML;
 
-  constructor(elements, dbInstance) {
+  constructor(elements, dbInstance, lenis) {
     this.elements = document.querySelectorAll(elements)
     if (this.elements.length < 1) return
 
     this.db = dbInstance; // indexedDB
     this.preFetchElementsIds = new Set();
-    
+    this.lenis = lenis
+
+
     this.previousKeyViewed   = "";
     this.previousHTML  = "";
 
@@ -109,6 +111,7 @@ class PageTransition {
   }
 
   popup(samePage = false) {
+    this.lenis.stop()
     const popup = document.getElementById('pageRender');
     document.body.style.overflow = "hidden";
 
@@ -124,20 +127,25 @@ class PageTransition {
     }
 
     const cursor = document.getElementById('cursor');
-    if (window.innerWidth < 1024) cursor.style.setProperty('--opacity', 1)
+    if (window.innerWidth < 1024) {
+      cursor.classList = "cursor-size-max-enter";
+      popup.setAttribute('data-visible', true);
+      cursor.classList = "cursor-size-max-enter-default"
+      return
+    }
+    
     cursor.classList = "cursor-size-max-enter";
-
     setTimeout(() => {
       popup.setAttribute('data-visible', true);
     }, 300)
 
     setTimeout(() => {
-      if (window.innerWidth < 1024) cursor.style.setProperty('--opacity', 0)
       cursor.classList = "cursor-size-max-enter-default"
     }, 400)
   }
 
   popout() {
+    this.lenis.start()
     const popup = document.getElementById('pageRender');
     const cursor = document.getElementById('cursor');
 
@@ -149,7 +157,7 @@ class PageTransition {
       cursor.classList = ""
       return
     }
-    
+
     setTimeout(() => {
       popup.setAttribute('data-visible', false);
       document.body.style.overflow  = "unset";
