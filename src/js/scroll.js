@@ -48,8 +48,7 @@ class ViewSectionScroll {
   }
 
   init() {
-    // this.elements.forEach(i => i.addEventListener('click', this.clickHandler))
-    document.body.addEventListener('click', this.clickHandler)
+    this.elements.forEach(i => i.addEventListener('click', this.clickHandler))
   }
 
   /**
@@ -58,7 +57,7 @@ class ViewSectionScroll {
    * @returns 
    */
   clickHandler(e) {
-    console.log('log')
+    console.log('log', e.target)
     const el = e.target.closest('[data-scroll-to]');
     if (!el) return; // Click outside elements should be ignored
 

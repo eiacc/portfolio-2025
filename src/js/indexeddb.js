@@ -31,36 +31,41 @@ async function fetchPage(e) {
   https://github.com/eiacc/IndexedDB
 */
 class IndexedDatabase {
-  constructor(name = "projects", version = 0) {
-    this.db         = window.indexedDB || window.mozIndexedDB || webkitIndexedDB || msIndexedDB || shimIndexedDB;
-    this.dbState    = this.db ? true : false;
-    this.dbRequest  = null;
-    this.dbInstance = null;
-    this.dbName     = name;
-    this.dbVersion  = version;
+  constructor(props) {
+    const { dbName, dbStoreName, version } = props;
+
+    this.db           = window.indexedDB || window.mozIndexedDB || webkitIndexedDB || msIndexedDB || shimIndexedDB;
+    this.dbState      = this.db ? true : false;
+    this.dbStoreName  = dbStoreName
+    this.dbRequest    = null;
+    this.dbInstance   = null;
+    this.dbName       = dbName;
+    this.dbVersion    = version;
   }
 
   init () {
-    if (!this.dbState) return;
+    if (!this.dbState) return Promise.reject("IndexedDB not supported");
 
-    this.dbRequest = this.db.open(this.dbName, this.dbVersion);
-    this.dbRequest.onerror          = ((e) => this.#err(e));
-    this.dbRequest.onupgradeneeded  = ((e) => this.#upgrade(e));
-    this.dbRequest.onsuccess        = ((e) => this.#success(e));
+    return new Promise((resolve, reject) => {
+      this.dbRequest                  = this.db.open(this.dbName, this.dbVersion);
+      this.dbRequest.onerror          = ((e) => this.err(e));
+      this.dbRequest.onupgradeneeded  = ((e) => this.upgrade(e));
+      this.dbRequest.onsuccess        = ((e) => this.success(e));
+    })
   }
 
-  #err(e) {
+  err(e) {
     console.log(`database error: ${e}`);
   }
 
-  #upgrade(e) {
+  upgrade(e) {
     const db = e.target.result
-    if (!db.objectStoreNames.contains(this.dbName)) {
-      db.createObjectStore(this.dbName, { keyPath: 'id', autoIncrement: true });
+    if (!db.objectStoreNames.contains(this.dbStoreName)) {
+      db.createObjectStore(this.dbStoreName, { keyPath: 'id', autoIncrement: true });
     }
   }
 
-  #success(e) {
+  success(e) {
     console.log("Database opened successfully");
     this.dbInstance = e.target.result;
   }
@@ -84,10 +89,21 @@ class IndexedDatabase {
 
       const tx          = this.dbInstance.transaction(objectStoreName, "readwrite");
       const store       = tx.objectStore(objectStoreName);
-      const request     = store.put(data);
 
-      request.onsuccess = () => resolve("Data saved successfully");
-      request.onerror   = (e) => reject(`Error saving data: ${e.target.error}`);
+      const getRequest = store.get(data.id);
+
+      getRequest.onsuccess = () => {
+        if (getRequest.result) {
+          reject(new Error(`Key "${data.id}" already exists. Use update or another strategy.`));
+        } else {
+          const storePutRequest     = store.put(data);
+
+          storePutRequest.onsuccess = () => resolve("Data saved successfully")
+          storePutRequest.onerror   = (e) => reject(`Error saving data: ${e.target.error}`);
+        }
+      };
+
+      getRequest.onerror   = (e) => reject(`Error saving data: ${e.target.error}`);
     });
   }
 }

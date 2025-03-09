@@ -7,6 +7,22 @@
 }
 
 @font-face {
+  font-family: 'SuisseIntl-Light';
+  src: url('./public/fonts/SuisseIntl-Light.woff2') format('woff2');
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SuisseIntl-Regular';
+  src: url('./public/fonts/SuisseIntl-Regular.woff2') format('woff2');
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'MonumentExtended-UltraBold';
   src: url('./public/fonts/MonumentExtended-Ultrabold.woff2') format('woff2');
   font-display: swap;
@@ -18,7 +34,11 @@
   --font-fallback: 'sans-serif';
   --monument-black: 'MonumentExtended-UltraBold', var(--font-fallback);
   --suisse-medium: 'SuisseIntl-Medium', var(--font-fallback);
+  --suisse-regular: 'SuisseIntl-Regular', var(--font-fallback);
+  --suisse-light: 'SuisseIntl-Light', var(--font-fallback);
 }
 
 .monument-black {font-family: var(--monument-black);}
 .suisse-500     {font-family: var(--suisse-medium);}
+.suisse-400     {font-family: var(--suisse-regular);}
+.suisse-300     {font-family: var(--suisse-light);}

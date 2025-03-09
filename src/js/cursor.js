@@ -95,3 +95,8 @@ class CustomCursor {
     requestAnimationFrame(this.animate);
   }
 }
+
+function cursorInit() {
+  const cursor = new CustomCursor('cursor')
+  cursor.hover('[data-cursor-size]')
+}

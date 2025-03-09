@@ -39,7 +39,7 @@
   .parallax__img:nth-of-type(2) {
     left: 1%;
     bottom: -2%;
-    opacity: 1;
+    display: block;
   }
   
   .parallax__img:nth-of-type(3) {
@@ -134,13 +134,13 @@
   .parallax__img:nth-of-type(3) {
     left: 15%;
     top: 68%;
-    display: none;
+    display: block;
   }
 
   .parallax__img:nth-of-type(4) {
     right: 11.81%;
     top: 28px;
-    display: none;
+    display: block;
   }
 
   .parallax__img:nth-of-type(5) {
@@ -155,7 +155,8 @@
 
   .parallax__img:nth-of-type(7) {
     top: 0%;
-    left: 28.47%
+    left: 28.47%;
+    display: block;
   }
 
   .works { 

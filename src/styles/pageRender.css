@@ -1,0 +1,83 @@
+#pageRender {
+  --top: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  transition: all 50ms ease;
+  overflow-y: auto;
+}
+
+#pageRender[data-visible="false"] {
+  scale: 0;
+  z-index: -1;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#pageRender[data-visible="true"] {
+  scale: 1;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  z-index: 110;
+}
+
+.pageRenderInner {
+  background: var(--clr-dark-2);
+  color: var(--clr-light);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 34px 16px;
+  height: 100%;
+}
+
+#closePageRender {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  position: relative;
+  background: transparent;
+  color: var(--clr-light);
+  cursor: pointer;
+  padding: 18px 32px;
+  border: 1px solid var(--clr-light);
+  width: max-content;
+  border-radius: 40px;
+}
+
+#closePageRender::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+}
+
+#closePageRender svg {
+  width: 24px;
+  transform: rotate(180deg);
+}
+
+#closePageRender svg path {
+  stroke: var(--clr-light);
+}
+
+#closePageRender span {
+  font-size: 24px;
+  letter-spacing: 0.25px;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 768px) {
+  .pageRenderInner {
+    padding: 124px 24px;
+  }
+}

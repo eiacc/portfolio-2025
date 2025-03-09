@@ -95,7 +95,7 @@
         ✅ Prevents the browser from automatically restoring the scroll position when navigating back/forward.
         ✅ Useful when handling custom scroll behavior (e.g., smooth scrolling or lazy loading).
       -->
-      <script>history.scrollRestoration && (history.scrollRestoration = 'manual');</script>
+      <!-- <script>history.scrollRestoration && (history.scrollRestoration = 'manual');</script> -->
     <!-- ================== END critical script -->
 
     <!-- Load non-critical CSS -->
@@ -213,7 +213,7 @@
               </div>
             </div><!-- project end -->
             <!-- project start -->
-            <div data-cursor-size="6" class="work">
+            <div data-cursor-size="6" data-page="ecobin" class="work">
               <div class="work__contents">
                 <div class="work__content">
                   <p class="work__site">Ecobin</p>
@@ -227,7 +227,7 @@
                 </div>
               </div>
             </div><!-- project end -->
-            <div data-cursor-size="6" class="work">
+            <div data-cursor-size="6" data-page="ecobins" class="work">
               <div class="work__contents">
                 <div class="work__content">
                   <p class="work__site">Daily Male</p>
@@ -393,6 +393,15 @@
           <path d="M690.24 61.1389L686.085 50.2889H660.286L656.131 61.1389H631.371L656.477 0.86111H689.894L715 61.1389H690.24ZM666.173 34.7889H680.198L673.186 16.3611L666.173 34.7889Z" fill="white"/>
         </svg>
       </footer>
+    </div>
+
+    <div id="pageRender" data-visible="false">
+      <div class="pageRenderInner">
+        <button id="closePageRender">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 23 22" class="list-item_arrow__VpscQ"><title>Diagonal Arrow</title><path stroke="#0E0E0E" stroke-width="3" d="m2 20.5 19-19m-15 0h15v15"></path></svg>
+          <span class="monument-black">Go Back</span>
+        </button>
+      </div>
     </div>
 
     <script src="https://unpkg.com/lenis@1.1.22/dist/lenis.min.js"></script> 

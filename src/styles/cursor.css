@@ -16,7 +16,7 @@ a {
   --x: 0;
   --y: 0;
   --blend: difference;
-  display: none;
+  /* display: none; */
   position: fixed;
   width: 20px;
   height: 20px;
@@ -47,6 +47,14 @@ a {
   transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(200); 
 }
 
+#cursor.cursor-size-max-enter-default {
+  mix-blend-mode: difference;
+  z-index: 115;
+  transition: transform 0.2s ease;
+  background-color: var(--clr-light);
+  transform: translate3d(var(--x, 0), var(--y, 0), 0) scale(1); 
+}
+
 #cursor.cursor-size-max-exit {
   mix-blend-mode: difference;
   background: rgba(255, 255, 255, 0.8);
@@ -63,6 +71,6 @@ a {
 
 @media screen and (min-width: 768px) {
   #cursor {
-    display: block;
+    /* display: block; */
   }
 }

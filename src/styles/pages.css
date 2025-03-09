@@ -1,26 +1,46 @@
 .page {
-  background-color: var(--clr-dark);
-  padding: 124px 16px;
+  padding: 16px;
   min-height: 100vh;
   color: var(--clr-light);
+  background-color: var(--clr-dark-2);
+  padding: 124px 24px;
+}
+
+.page__inner {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2.5rem;
+  border-radius: 32px;
+}
+
+.page__logo {
+  display: grid;
+  margin-block-end: 2.5rem;
+}
+
+.page__logo svg {
+  width: 100%;
 }
 
 .page__title {
   font-size: 2rem;
-  margin-block-end: 1.25rem;
   text-transform: uppercase;
 }
 
 .page__description {
-  font-size: 0.75rem;
+  font-size: 14px;
+  line-height: 149%;
+  letter-spacing: .25px;
 }
 
 .page__site {
-  height: 100%;
+  height: 0%;
   width: 100%;
-  background-color: orange;
-  padding-bottom: 40%;
+  /* background-color: rgba(255, 166, 0, 0.359); */
+  padding-bottom: 60%;
   position: relative;
+  display: grid;
+  place-items: center;
 }
 
 .page__site-image {
@@ -29,4 +49,51 @@
   left: 0;
   height: 100%;
   width: 100%;
+}
+
+.page__url {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: max-content;
+  z-index: 2;
+}
+
+.page__stack p {
+  font-size: 14px;
+  line-height: 149%;
+  letter-spacing: .25px;
+}
+
+.page__stack a {
+  color: rgb(16, 101, 175);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.page__role {
+  margin-block-end: 1.5rem;
+}
+
+.page__role p {
+  line-height: 149%;
+  letter-spacing: .25px;
+}
+
+.page__role h2,
+.page__stack h3 {
+  margin-block-end: 0.75rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .page__inner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4.5rem;
+  }
+
+  
+  /* .page__about-role {
+    order: 1;
+  } */
 }

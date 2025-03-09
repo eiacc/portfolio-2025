@@ -2,10 +2,28 @@
 
 window.addEventListener("load", async() => {
   Loader();
-  document.addEventListener("LoaderFinished", init) // LoaderFinished is a custom event located at loader.js file
+
+  const dbProps = {
+    dbName       : "portfolio",
+    dbStoreName : "projects",
+    version       : 1
+  }
+  const dbInstance = new IndexedDatabase(dbProps); 
+  dbInstance.init();
+  document.addEventListener("LoaderFinished", () => init(dbInstance)) // LoaderFinished is a custom event located at loader.js file
 });
 
-function init() {
+async function init(dbInstance) {
+  // Smooth Scroll and Custom Cursor
+  cursorInit();
+  const lenis = new Lenis({
+    autoRaf: true,
+    smooth: true,   // Enables smooth scrolling
+    lerp: 0.1,      // Lower = smoother, Higher = snappier
+    duration: 1,    // Adjusts scroll ease duration
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom easing function (optional)
+  });
+
   // Header Animations
   const headerAnim            = new Animations('[data-fade-down]', 'header', 500);
   const headerAnimAsDeps      = headerAnim.stagger();
@@ -32,24 +50,6 @@ function init() {
   const stickySection             = new StickySection('[data-sticky-section]', '[data-transform-container]', '[data-dot]')
   stickySection.init(parallaxImagesAnimAsDeps);
 
-  // Smooth Scroll and Custom Cursor
-  if (window.innerWidth > 1024) {
-    const cursor = new CustomCursor('cursor')
-    cursor.hover('[data-cursor-size]')
-
-    const lenis = new Lenis({
-      autoRaf: true,
-      smooth: true,   // Enables smooth scrolling
-      lerp: 0.1,      // Lower = smoother, Higher = snappier
-      duration: 1,    // Adjusts scroll ease duration
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Custom easing function (optional)
-    });
-  }
-
-  // TODO: fix this code and indexeddb.js
-  const works = document.getElementsByClassName('work')
-  Array.from(works).forEach(work => {
-    work.addEventListener('click', expandWork)
-    work.addEventListener('mouseenter', debouncedFetchingPage, { once: true }) // fetch only once 
-  })
+  const worksEvent = new PageTransition('.work', dbInstance, lenis);
+  await worksEvent.init()
 }
