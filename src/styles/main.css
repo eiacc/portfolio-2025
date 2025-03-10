@@ -122,6 +122,19 @@ header a {
 .parallax-container {
   --height: 175vh;
   height: var(--height);
+  position: relative;
+}
+
+/* hide white line between parallax container and works */
+.parallax-container::before {
+  content: "";
+  position: absolute;
+  bottom: -2.5px;
+  left: 0;
+  background-color: var(--clr-dark);
+  height: 10px;
+  width: 100%;
+  z-index: 1;
 }
 
 .parallax {
@@ -244,10 +257,10 @@ header a {
   --padding-block: 1;
   --font-size: 1.75rem;
   width: 100%;
+  height: calc(var(--font-size) + var(--padding-block) * 2rem);
   border-bottom: 1px solid rgb(255 255 255 / 0.3);
   position: relative;
   overflow: hidden;
-  height: calc(var(--font-size) + var(--padding-block) * 2rem);
   display: block;
 }
 

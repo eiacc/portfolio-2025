@@ -66,6 +66,10 @@
   letter-spacing: .25px;
 }
 
+.page__stack p:first-of-type {
+  margin-block-end: 1rem;
+}
+
 .page__stack a {
   color: rgb(16, 101, 175);
   text-decoration: underline;

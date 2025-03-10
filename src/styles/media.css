@@ -72,7 +72,6 @@
   .works {
     --pad-yt: 62px;
     --pad-yb: 40px;
-    min-height: 80vh;
   }
 
   .work {
@@ -163,7 +162,6 @@
     --pad-x: 36px; 
     --pad-yt: 124px;
     --pad-yb: 80px;
-    min-height: 90vh;
   }
 
   .work {
