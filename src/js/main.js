@@ -6,7 +6,7 @@ window.addEventListener("load", async() => {
   const dbProps = {
     dbName       : "portfolio",
     dbStoreName : "projects",
-    version       : 1
+    version       : 2
   }
   const dbInstance = new IndexedDatabase(dbProps); 
   dbInstance.init();
