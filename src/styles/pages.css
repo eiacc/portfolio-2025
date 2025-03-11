@@ -64,9 +64,10 @@
   font-size: 14px;
   line-height: 149%;
   letter-spacing: .25px;
+  font-family: var(--suisse-light);
 }
 
-.page__stack p:first-of-type {
+.page__stack p:not(:last-of-type) {
   margin-block-end: 1rem;
 }
 
@@ -94,6 +95,7 @@
   .page__inner {
     grid-template-columns: repeat(2, 1fr);
     gap: 4.5rem;
+    padding-block-end: 124px;
   }
 
   
