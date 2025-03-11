@@ -62,5 +62,4 @@ const server = serve({
 
 console.log(`listening on http://localhost:${port}`)
 console.log(`Scan here to view on mobile \n`)
-// qrcode.generate("https://concise-trusty-gelding.ngrok-free.app", { small: true });
-qrcode.generate("https://d9cr6uh037ztz9zw-14731640896.shopifypreview.com", { small: true });
+qrcode.generate("https://concise-trusty-gelding.ngrok-free.app", { small: true });
